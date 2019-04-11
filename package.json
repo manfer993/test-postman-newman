@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "project using postman",
   "directories": {
-    "test":"tests"
+    "test": "tests"
   },
   "scripts": {
-    "api-test": "newman run tests/httpbin_org.postman_collection.json"
+    "test": "newman run tests/httpbin_org.postman_collection.json"
   },
   "repository": {
     "type": "git",
