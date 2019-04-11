@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "f6c7d0c0-a052-438b-839e-c051f7518f4c",
-		"name": "Curso Postman",
+		"name": "test-postman-newman",
 		"description": "Paso de variables en postman de un request a otro por medio de codigo",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -17,8 +17,8 @@
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
-							"pm.test(\"Response time is less than 250ms\", function () {",
-							"    pm.expect(pm.response.responseTime).to.be.below(250);",
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
 							"});",
 							"const response = pm.response.json(); //get response",
 							"//console.log(response.uuid);",
