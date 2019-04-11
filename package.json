@@ -1,0 +1,23 @@
+{
+  "name": "test-postman-newman",
+  "version": "1.0.0",
+  "description": "project using postman",
+  "directories": {
+    "test":"tests"
+  },
+  "scripts": {
+    "api-test": "newman run tests/httpbin_org.postman_collection.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manfer993/test-postman-newman.git"
+  },
+  "author": "Manuel Munoz",
+  "bugs": {
+    "url": "https://github.com/manfer993/test-postman-newman/issues"
+  },
+  "homepage": "https://github.com/manfer993/test-postman-newman#readme",
+  "dependencies": {
+    "newman": "^4.4.1"
+  }
+}

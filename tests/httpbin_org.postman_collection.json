@@ -1,0 +1,132 @@
+{
+	"info": {
+		"_postman_id": "f6c7d0c0-a052-438b-839e-c051f7518f4c",
+		"name": "Curso Postman",
+		"description": "Paso de variables en postman de un request a otro por medio de codigo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get orderId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "47b67cd3-7c01-48cf-9464-b3b35420b40f",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response time is less than 250ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(250);",
+							"});",
+							"const response = pm.response.json(); //get response",
+							"//console.log(response.uuid);",
+							"pm.globals.set(\"orderId\", response.uuid);//set global variable"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://httpbin.org/uuid",
+					"protocol": "http",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"uuid"
+					]
+				},
+				"description": "Suministra un id que cambia en cada peticion a servicio"
+			},
+			"response": []
+		},
+		{
+			"name": "Send order",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "d2bb0776-5f91-4009-8398-05dca8e4fb53",
+						"exec": [
+							"const costumerId = Math.floor((Math.random() * 10) + 1);",
+							"//console.log(costumerId);",
+							"pm.globals.set(\"costumerId\", costumerId);",
+							"const token = Math.floor((Math.random() * 1000) + 1);",
+							"pm.globals.set(\"token\", token);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "2c8c4ee2-d905-4c4c-95c4-21e358d1bec8",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"const response = pm.response.json();",
+							"pm.test(\"Check if costumerId equals \"+ pm.globals.get(\"costumerId\"), function () {",
+							"    pm.expect(response.json.costumerId).to.eql(pm.globals.get(\"costumerId\"));",
+							"});",
+							"pm.test(\"Check productIds\", function () {",
+							"    pm.expect(response.json.products[0].productId).to.eql(324344);",
+							"    pm.expect(response.json.products[1].productId).to.eql(21333);",
+							"});",
+							"console.log(response.json.products);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"orderId\":\"{{orderId}}\",\n\t\"costumerId\":{{costumerId}},\n\t\"owner\":\"Andres pinto\",\n\t\"products\":[\n\t\t\t{\n\t\t\t\t\"productId\":324344,\n\t\t\t\t\"procutName\":\"NoteBook\",\n\t\t\t\t\"quantity\":{{$randomInt}}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"productId\":21333,\n\t\t\t\t\"procutName\":\"Eraser\",\n\t\t\t\t\"quantity\":5\n\t\t\t}\n\t\t]\n}"
+				},
+				"url": {
+					"raw": "http://httpbin.org/post",
+					"protocol": "http",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"post"
+					]
+				},
+				"description": "estructura base de un servicio post usando variables"
+			},
+			"response": []
+		}
+	]
+}
