@@ -6,8 +6,9 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "newman run tests/httpbin_org.postman_collection.json newman_report.xml",
-    "test2": "newman run tests/httpbin_org.postman_collection.json --reporters junit --reporter-junit-export newman_report.xml"
+    "test": "newman run tests/httpbin_org.postman_collection.json result/report.xml",
+    "test2": "newman run tests/httpbin_org.postman_collection.json --reporters cli,junit --reporter-junit-export result/newman_report.xml",
+	"test3": "newman run tests/httpbin_org.postman_collection.json --reporters cli,json --reporter-json-export result/outputfile.json"
   },
   "repository": {
     "type": "git",
