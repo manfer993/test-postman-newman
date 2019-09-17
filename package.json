@@ -6,10 +6,11 @@
     "test": "Collection"
   },
   "scripts": {
-    "test": "newman run Collection/httpbin_org.postman_collection.json Report/report.xml",
+    "test1": "newman run Collection/httpbin_org.postman_collection.json Report/report.xml",
     "test2": "newman run Collection/httpbin_org.postman_collection.json --reporters cli,junit --reporter-junit-export Report/newman_report.xml",
     "test3": "newman run Collection/httpbin_org.postman_collection.json --reporters cli,json --reporter-json-export Report/outputfile.json",
-    "test4": "newman run Collection/httpbin_org.postman_collection.json --reporters html --reporter-html-export Report/report.html --reporter-html-template Template/customTemplate.hbs"
+    "test4": "newman run Collection/httpbin_org.postman_collection.json --reporters html --reporter-html-export Report/report.html --reporter-html-template Template/customTemplate.hbs",
+    "test5": "newman run Collection/ZipCode.postman_collection.json --environment Environment/Dev.postman_environment.json --globals Data/Workspace.postman_globals.json --reporters html --reporter-html-export Report/report.html --reporter-html-template Template/customTemplate.hbs"
   },
   "repository": {
     "type": "git",

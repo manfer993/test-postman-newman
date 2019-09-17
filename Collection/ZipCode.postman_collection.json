@@ -1,0 +1,121 @@
+{
+	"info": {
+		"_postman_id": "51274a96-b6e7-4604-b831-572d4971fd87",
+		"name": "ZipCode",
+		"description": "this is the description of my project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET ZipCode Details US",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b7955bbe-484d-487b-a952-741cad861b18",
+						"exec": [
+							"var response = JSON.parse(responseBody);",
+							"var schema = {",
+							"  \"properties\": {",
+							"    \"post code\": {",
+							"      \"type\": \"string\",",
+							"    },",
+							"    \"country\": {",
+							"      \"type\": \"string\",",
+							"    },",
+							"    \"country abbreviation\": {",
+							"      \"type\": \"string\",",
+							"    },",
+							"    \"places\": {",
+							"      \"type\": \"array\",",
+							"      \"items\": {",
+							"        \"type\": \"object\",",
+							"        \"properties\": {",
+							"          \"place name\": {",
+							"            \"type\": \"string\",",
+							"          },",
+							"          \"longitude\": {",
+							"            \"type\": \"string\",",
+							"          },",
+							"          \"state\": {",
+							"            \"type\": \"string\",",
+							"          },",
+							"          \"state abbreviation\": {",
+							"            \"type\": \"string\",",
+							"          },",
+							"          \"latitude\": {",
+							"            \"type\": \"string\",",
+							"          }",
+							"        }",
+							"      }",
+							"    }",
+							"  }",
+							"};",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1 sec\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"",
+							"pm.test('Posts Schema is valid', function() { ",
+							"    pm.expect(tv4.validate(response, schema)).to.be.true;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "bdb7b82e-c49a-428a-8ef4-98c0188e5581",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{zippopotam}}/{{country}}/{{zipCode}}",
+					"host": [
+						"{{zippopotam}}"
+					],
+					"path": [
+						"{{country}}",
+						"{{zipCode}}"
+					]
+				},
+				"description": "https://api.zippopotam.us"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "06d2bb9a-e55f-431e-b124-98ce9a7c4fd8",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "99d9d036-7a45-484d-9164-35ba6cdd3c7c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
