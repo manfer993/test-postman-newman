@@ -6,9 +6,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # Reports
-/Report/*.xml
-/Report/*.json
-/Report/*.html
+Report/*
 
 # Runtime data
 pids
