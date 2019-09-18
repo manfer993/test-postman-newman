@@ -6,7 +6,7 @@
     "test": "Collection"
   },
   "scripts": {
-    "test1": "newman run Collection/httpbin_org.postman_collection.json Report/report.xml",
+    "test1": "node Scripts/app.js",
     "test2": "newman run Collection/httpbin_org.postman_collection.json --reporters cli,junit --reporter-junit-export Report/newman_report.xml",
     "test3": "newman run Collection/httpbin_org.postman_collection.json --reporters cli,json --reporter-json-export Report/outputfile.json",
     "test4": "newman run Collection/httpbin_org.postman_collection.json --reporters html --reporter-html-export Report/report.html --reporter-html-template Template/customTemplate.hbs",

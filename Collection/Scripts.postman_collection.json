@@ -1,0 +1,275 @@
+{
+	"info": {
+		"_postman_id": "51274a96-b6e7-4604-b831-572d4971fd87",
+		"name": "scripts",
+		"description": "this is the description of my project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Postman Echo GET",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5e599396-c004-436d-a1bb-2a16139db0f1",
+						"exec": [
+							"var response = JSON.parse(responseBody);\r",
+							"\r",
+							"var schema = {\r",
+							"  \"properties\": {\r",
+							"    \"userId\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"id\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"title\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"body\": {\r",
+							"      \"type\": \"string\"\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\"userId\", \"id\", \"title\", \"body\"]\r",
+							"};\r",
+							"\r",
+							"response.forEach(function(post) {\r",
+							"    console.log(post);\r",
+							"    var testTitle = \"Post \" + post.id + \" conforms to schema\";\r",
+							"    tests[testTitle] = tv4.validate(post, schema);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{jsonplaceholder}}/posts",
+					"host": [
+						"{{jsonplaceholder}}"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"method\": \"POST\"\n}"
+						},
+						"url": {
+							"raw": "https://postman-echo.com/post",
+							"protocol": "https",
+							"host": [
+								"postman-echo",
+								"com"
+							],
+							"path": [
+								"post"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 04 Oct 2018 13:16:50 GMT"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"21a-6y1+9dLw9Ui/9TFPCS1aNOaKU38\""
+						},
+						{
+							"key": "Server",
+							"value": "nginx"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Content-Length",
+							"value": "376"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"args\": {},\n    \"data\": {\n        \"method\": \"POST\"\n    },\n    \"files\": {},\n    \"form\": {},\n    \"headers\": {\n        \"host\": \"postman-echo.com\",\n        \"content-length\": \"21\",\n        \"accept\": \"*/*\",\n        \"accept-encoding\": \"gzip, deflate\",\n        \"cache-control\": \"no-cache\",\n        \"content-type\": \"application/json\",\n        \"cookie\": \"sails.sid=s%3AG10mxUHVB65q6zAdIPRPk7kAxyMNpmeM.tn9m63fNTjoJBYkiUShtDIIliVwslI4ys8tvItjT2%2BA\",\n        \"postman-token\": \"e96e5264-9de6-4aa6-8737-3ab5489d561c\",\n        \"user-agent\": \"PostmanRuntime/7.3.0\",\n        \"x-forwarded-port\": \"443\",\n        \"x-forwarded-proto\": \"https\"\n    },\n    \"json\": {\n        \"method\": \"POST\"\n    },\n    \"url\": \"https://postman-echo.com/post\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Postman Echo POST",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"method\": \"POST\"\n}"
+				},
+				"url": {
+					"raw": "{{postman}}/post",
+					"host": [
+						"{{postman}}"
+					],
+					"path": [
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ZipCode Details US",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b7955bbe-484d-487b-a952-741cad861b18",
+						"exec": [
+							"var response = JSON.parse(responseBody);",
+							"var schema = {",
+							"  \"title\": \"ZipCode Schema\",",
+							"  \"type\": \"object\",",
+							"  \"properties\": {",
+							"    \"post code\": {",
+							"      \"type\": \"string\",",
+							"    },",
+							"    \"country\": {",
+							"      \"type\": \"string\",",
+							"    },",
+							"    \"country abbreviation\": {",
+							"      \"type\": \"string\",",
+							"    },",
+							"    \"places\": {",
+							"      \"type\": \"array\",",
+							"      \"items\": {",
+							"        \"type\": \"object\",",
+							"        \"properties\": {",
+							"          \"place name\": {",
+							"            \"type\": \"string\",",
+							"          },",
+							"          \"longitude\": {",
+							"            \"type\": \"string\",",
+							"          },",
+							"          \"state\": {",
+							"            \"type\": \"string\",",
+							"          },",
+							"          \"state abbreviation\": {",
+							"            \"type\": \"string\",",
+							"          },",
+							"          \"latitude\": {",
+							"            \"type\": \"string\",",
+							"          }",
+							"        }",
+							"      }",
+							"    }",
+							"  }",
+							"};",
+							"",
+							"pm.test('Posts Schema is valid', function() { ",
+							"    pm.expect(tv4.validate(response, schema)).to.be.true;",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1 sec\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "bdb7b82e-c49a-428a-8ef4-98c0188e5581",
+						"exec": [
+							"pm.globals.set(\"country\", \"us\");",
+							"pm.globals.set(\"zipCode\", \"90210\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{zippopotam}}/{{country}}/{{zipCode}}",
+					"host": [
+						"{{zippopotam}}"
+					],
+					"path": [
+						"{{country}}",
+						"{{zipCode}}"
+					]
+				},
+				"description": "https://api.zippopotam.us"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "06d2bb9a-e55f-431e-b124-98ce9a7c4fd8",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "99d9d036-7a45-484d-9164-35ba6cdd3c7c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
