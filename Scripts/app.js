@@ -5,14 +5,14 @@ newman.run({
     collection: require('../Collection/Scripts.postman_collection.json'),
     environment: require('../Environment/Dev.postman_environment.json'),
     globals: require('../Data/Workspace.postman_globals.json'),
-    reporters: ['cli','html','json'],
-    reporter : { 
-        html : { 
-            export : './Report/html/htmlReport.html', 
+    reporters: ['cli', 'html', 'json'],
+    reporter: {
+        html: {
+            export: './Report/html/htmlReport.html',
             template: './Template/customTemplate.hbs'
-        }, 
-        json: { 
-            export: '../Report/json/jsonReport.json'
+        },
+        json: {
+            export: './Report/json/jsonReport.json'
         }
     },
     insecure: true, // allow self-signed certs, required in postman too
