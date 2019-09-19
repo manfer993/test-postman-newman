@@ -6,7 +6,7 @@
     "test": "Collection"
   },
   "scripts": {
-    "single": "node Scripts/app.js",
+    "single": "node Scripts/sample.js",
     "multiple": "node Scripts/parallel.js"
   },
   "repository": {
