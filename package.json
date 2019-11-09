@@ -21,6 +21,6 @@
   "dependencies": {
     "newman": "^4.5.0",
     "newman-reporter-html": "^1.0.3"
-    "csv-parse": ">=4.4.6"
+    "csv-parse": "^4.4.6"
   }
 }
